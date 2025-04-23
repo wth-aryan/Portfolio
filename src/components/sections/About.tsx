@@ -1,6 +1,8 @@
 import React from 'react';
 import Matrix from '../animations/Matrix';
 import { Code, Lightbulb, Cpu } from 'lucide-react';
+import myImg from '../../img/My-img.jpg';
+import myCv from '../../img/Aryan-cv.pdf';
 
 const About: React.FC = () => {
   return (
@@ -19,7 +21,8 @@ const About: React.FC = () => {
           <div className="bg-dark-900/70 backdrop-blur-sm p-6 rounded-lg border border-neon-green/20 text-left hover:shadow-[0_0_15px_rgba(0,255,136,0.2)] transition-shadow">
             <div className="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
               <img 
-                src="src/img/my-img.jpg"
+                src={myImg}
+                alt="Aryan's profile picture"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -66,7 +69,7 @@ const About: React.FC = () => {
         
         <div className="mt-12">
           <a 
-            href="src/img/Aryan-cv.pdf" 
+            href={myCv}
             download 
             className="inline-block px-6 py-3 bg-neon-green text-black font-orbitron font-medium rounded-full hover:bg-neon-pink transition-colors"
           >
