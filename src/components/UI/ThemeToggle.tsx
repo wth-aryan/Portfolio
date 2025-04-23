@@ -5,18 +5,32 @@ const ThemeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   
   useEffect(() => {
-    // Always start in dark mode
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-    setIsDarkMode(true);
+    // Check if theme preference is stored in localStorage
+    const storedTheme = localStorage.getItem('theme');
+    
+    if (storedTheme) {
+      // Use stored preference
+      const isDark = storedTheme === 'dark';
+      document.documentElement.classList.toggle('dark', isDark);
+      setIsDarkMode(isDark);
+    } else {
+      // If no preference is stored, check system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', prefersDark);
+      localStorage.setItem('theme', prefersDark ? 'dark' : 'light');
+      setIsDarkMode(prefersDark);
+    }
     
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => {
-      const newTheme = e.matches ? 'dark' : 'light';
-      document.documentElement.classList.toggle('dark', e.matches);
-      localStorage.setItem('theme', newTheme);
-      setIsDarkMode(e.matches);
+      // Only apply system preference if user hasn't manually set a preference
+      if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', e.matches);
+        localStorage.setItem('theme', newTheme);
+        setIsDarkMode(e.matches);
+      }
     };
     
     mediaQuery.addEventListener('change', handleChange);

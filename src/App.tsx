@@ -15,6 +15,17 @@ function App() {
     // Update page title
     document.title = 'Aryan Chaudhary ';
     
+    // Initialize theme from localStorage
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    } else {
+      // Default to system preference if no stored preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', prefersDark);
+      localStorage.setItem('theme', prefersDark ? 'dark' : 'light');
+    }
+    
     // Optional: Text-to-speech welcome message on desktop
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
