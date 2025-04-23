@@ -11,12 +11,12 @@ export const projects: ProjectData[] = [
     code: 'https://github.com/wth-aryan/Doctor-clinic-appointment',
   },
   {
-    id: "Coffee-shop",
-    title: "Coffee shop",
-      fullDescription: "A platform for browsing the menu, placing orders, and managing transactions, built with React and Firebase.",
-      tags: ["React", "Firebase", "Real-time", "Collaboration"],
-      link: '',
-      code: 'https://github.com/wth-aryan/Doctor-clinic-appointment',
+    id: "Woofey",
+    title: "Woofey",
+      fullDescription: "A platform for browsing the menu, placing orders, and managing transactions, built with Reactjs and Nodejs.",
+      tags: ["React", "Nodejs", "Real-time", "Collaboration"],
+      link: 'https://woofey.vercel.app/home',
+      code: 'https://github.com/wth-aryan/coffee-shop-website',
     
   },
   {
